@@ -149,8 +149,8 @@
         /* Button Styles */
         .btn {
             display: inline-block;
-            background-color: white; /* jadi putih semua */
-            color: #e53935; /* warna teks merah/coral */
+            background-color: rgb(0, 0, 0); /* jadi putih semua */
+            color: #e7e7e7; /* warna teks merah/coral */
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
             text-decoration: none;
@@ -281,16 +281,41 @@
             background-color: white;
         }
 
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
+        .contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
 
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 2rem;
-        }
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff6b6b;
+    outline: none;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 2rem;
+}
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+}
 
         .contact-info h3 {
             font-size: 1.8rem;
@@ -557,33 +582,25 @@
                     <p>Im always happy to discuss ideas, projects, or opportunities to grow and improve my skills.</p>
                     <p><strong>Email:</strong> trecyadw@gmail.com</p>
                     <p><strong>Phone:</strong> (+62)858-9202-662</p>
-                    <div class="contact-social">
-                        <a href="#"><i>LinkedIn</i></a>
-                        <a href="#"><i>GitHub</i></a>
-                        <a href="#"><i>Instagram</i></a>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
+                <form action="https://formspree.io/f/mnnvykak" method="POST">
+                <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+                <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" required></textarea>
+    </div>
+    <button type="submit" class="btn">Send Message</button>
+</form>
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
         <p>&copy; <span id="year"></span> Trecya Dewi Kusumaningrum. All rights reserved.</p>
@@ -613,26 +630,6 @@
                     navLinks.classList.remove('active');
                 }
             });
-        });
-
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it
-            console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
-            
-            // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
         });
 
             // For a real deployment, you would replace the above with:
