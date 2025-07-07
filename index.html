@@ -1,0 +1,667 @@
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #444;
+            --accent:rgb(84, 85, 87);
+            --light:rgb(0, 0, 0);
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff2a6; /* contoh peach pastel */
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+        }
+        .nav-links a:hover {
+            color: #ff6b6b; /* aksen peach/coral untuk hover */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+
+      .hero {
+           height: 100vh;
+          display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: url('images/gradient.jpg') center center/cover no-repeat;
+        }
+        .hello {
+            color: black;
+        }
+
+        .your-name {
+            color: white;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px; /* dari 400px jadi 450px */
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: white; /* jadi putih semua */
+            color: #e53935; /* warna teks merah/coral */
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+             color: #ff6b6b;
+             border-color: #ff6b6b;
+        }
+        .btn-outline:hover {
+         background-color: #ff6b6b;
+         color: white;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        /* Skills Section */
+       .skills {
+  padding: 4rem 0;
+  text-align: center;
+  background-color: #ffd1b3;
+  color: white;
+}
+
+.skills h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.skills h3 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color:rgb(255, 255, 255);
+}
+
+.skillset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skill-badge {
+  display: inline-block;
+  background-color:rgb(0, 0, 0); /* badge gelap */
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  border: 1px solid #333;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.skill-badge:hover {
+  background-color: #333;
+  transform: translateY(-3px);
+}
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-social {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .contact-social a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-social a:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+
+            .about-text, .about-image {
+                padding-right: 0;
+                padding-top: 0;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Download Button */
+        .download-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .download-btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Port<span>folio</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-text">
+                    <h1><span class="hello">Hi, I'm</span> <span class="your-name">Trecya Dewi Kusumaningrum</span></h1>
+                    <p>A passionate web developer and UI/UX enthusiast with experience in creating responsive and user-friendly websites.</p>
+                    <div>
+                        <a href="#contact" class="btn">Contact Me</a>
+                        <a href="CV/CV_Trecyadewi.pdf" class="btn btn-outline" download>Download CV</a>
+
+                    </div>
+                </div>
+                <div class="hero-image">
+                  <img src="images/foto.png" alt="Profile Photo" style="width: 100%; max-width: 400px; border-radius: 50%; border: 5px solid white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Learn more about my background, projects, and learning journey.</p>
+            </div>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h3>Web Development Enthusiast</h3>
+                    <p>As a web development student, I focus on creating responsive and user-friendly websites through hands-on projects and continuous learning..</p>
+                    <p>My passion for technology and design motivates me to learn how to combine functionality with aesthetics, aiming to create websites that are effective and visually appealing.</p>
+                    <p>When Im not coding, I enjoy learning about new technologies, improving my skills through online courses, and connecting with other aspiring developers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="skills" id="skills">
+  <div class="container">
+    <h2>My Skillset</h2>
+
+    <h3>Web Development</h3>
+    <div class="skillset">
+      <span class="skill-badge">HTML & CSS</span>
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">Responsive Web Design</span>
+    </div>
+
+    <h3>Version Control</h3>
+    <div class="skillset">
+      <span class="skill-badge">Git & GitHub</span>
+    </div>
+
+    <h3>Design Tools</h3>
+    <div class="skillset">
+      <span class="skill-badge">Figma</span>
+      <span class="skill-badge">Canva</span>
+      <span class="skill-badge">UI/UX Prototyping</span>
+      <span class="skill-badge">Basic Graphic Design</span>
+    </div>
+  </div>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Feel free to reach out to connect, collaborate, or learn together.</p>
+            </div>
+            <div class="contact-container fade-in">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Im always happy to discuss ideas, projects, or opportunities to grow and improve my skills.</p>
+                    <p><strong>Email:</strong> trecyadw@gmail.com</p>
+                    <p><strong>Phone:</strong> (+62)858-9202-662</p>
+                    <div class="contact-social">
+                        <a href="#"><i>LinkedIn</i></a>
+                        <a href="#"><i>GitHub</i></a>
+                        <a href="#"><i>Instagram</i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+        <p>&copy; <span id="year"></span> Trecya Dewi Kusumaningrum. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking a link
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just log it
+            console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+            
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+            // For a real deployment, you would replace the above with:
+            // window.location.href = 'path-to-your-cv.pdf';
+
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const fadeOnScroll = new IntersectionObserver(function(entries, fadeOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    fadeOnScroll.unobserve(entry.target);
+                }
+            });
+        }, fadeOptions);
+        
+        fadeElements.forEach(fadeElement => {
+            fadeOnScroll.observe(fadeElement);
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+```
